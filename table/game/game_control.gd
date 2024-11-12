@@ -4,8 +4,9 @@ class_name GameControl
 var blockTscn = preload("res://table/block/block.tscn")
 var blocks : Array[Block]
 
-static var animeMutex:Mutex = Mutex.new()
 @onready var player = $player
+static var animePlaying = false
+var action_list : Array[Dictionary]
 
 func block_ready():
 	blocks.resize(24)
@@ -44,9 +45,9 @@ func _ready() -> void:
 	block_ready()
 	
 	pass # Replace with function body.
+	
 
 func mov_player_to(num:int):
-	animeMutex.lock()
 	player.walk_to(blocks[num].position)
 	
 	pass
@@ -54,11 +55,26 @@ func mov_player_to(num:int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func click_process(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_action_just_pressed("click"):
 		for i in range(0, 24):
 			if blocks[i].focused :
-				mov_player_to(i)
+				action_list.push_back({"type":"player_move","num":i})
+				
+func play_anime():
+	animePlaying = true
+	match( action_list[0].get("type","unknown") ):
+		"player_move":
+			mov_player_to(action_list[0].get("num",0))
+		"unknown":
+			print("unknown anime type error!")
+	action_list.pop_front()
+	
+
+func anime_process(delta):
+	if not animePlaying and not action_list.is_empty():
+		play_anime()
 
 func _process(delta: float) -> void:
 	click_process(delta)
+	anime_process(delta)
 	pass

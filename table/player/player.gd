@@ -12,6 +12,7 @@ var walking := false
 var destion := Vector3(0,0,0)
 var walking_speed = 50
 
+
 func walk_to(pos):
 	walking = true
 	destion = pos + player_offset
@@ -20,8 +21,8 @@ func process_walk(delta):
 	if walking :
 		if (destion - position).length() <= walking_speed * delta :
 			walking = false
-			GameControl.animeMutex.unlock()
 			position = destion
+			GameControl.animePlaying = false
 		else :
 			position = position + walking_speed * (destion - position).normalized() * delta
 		
