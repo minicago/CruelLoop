@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://lwi6oebxd16"]
+
+[ext_resource type="Script" path="res://table/block/block.gd" id="1_fgrcy"]
+[ext_resource type="Shader" path="res://shader/simplecolor.gdshader" id="1_qba2w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ys1af"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1cxl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_qba2w")
+shader_parameter/color = Vector3(1, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q15c5"]
+size = Vector3(5, 1, 5)
+
+[node name="block" type="Node3D"]
+script = ExtResource("1_fgrcy")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+lock_rotation = true
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_ys1af")
+surface_material_override/0 = SubResource("ShaderMaterial_g1cxl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_q15c5")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1, 0)
+text = "?"
+font_size = 256

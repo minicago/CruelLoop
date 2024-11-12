@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0o6ycttgo6eg"]
+
+[ext_resource type="Shader" path="res://shader/simplecolor.gdshader" id="1_lx51t"]
+[ext_resource type="Script" path="res://table/block_nav.gd" id="2_42vcj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ys1af"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyjqb"]
+render_priority = 0
+shader = ExtResource("1_lx51t")
+shader_parameter/color = Vector3(1, 1, 0)
+
+[node name="Table" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_ys1af")
+surface_material_override/0 = SubResource("ShaderMaterial_vyjqb")
+
+[node name="blockNav" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1.5, -20)
+script = ExtResource("2_42vcj")

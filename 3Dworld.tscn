@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://5cyd24x7r7sm"]
+
+[ext_resource type="Texture2D" uid="uid://drd25bk8xekbb" path="res://environment/sky.png" id="1_k6hbn"]
+[ext_resource type="PackedScene" uid="uid://b0o6ycttgo6eg" path="res://table/table.tscn" id="1_lf2qv"]
+[ext_resource type="Script" path="res://environment/sky_rotate.gd" id="2_al8g4"]
+[ext_resource type="Script" path="res://environment/light_rotate.gd" id="4_t17j1"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qufiq"]
+panorama = ExtResource("1_k6hbn")
+
+[sub_resource type="Sky" id="Sky_5cly0"]
+sky_material = SubResource("PanoramaSkyMaterial_qufiq")
+
+[sub_resource type="Environment" id="Environment_70hjb"]
+background_mode = 2
+sky = SubResource("Sky_5cly0")
+
+[node name="3Dworld" type="Node3D"]
+
+[node name="Table" parent="." instance=ExtResource("1_lf2qv")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573577, 0.819152, 0, -0.819152, 0.573577, 15, 30, 30)
+environment = SubResource("Environment_70hjb")
+current = true
+fov = 90.0
+far = 100.0
+script = ExtResource("2_al8g4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.97046, 0.241261, 0, -0.241261, -0.97046, 0, 0, 0)
+script = ExtResource("4_t17j1")
