@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cput3nexwqjcw"]
+
+[ext_resource type="Script" path="res://table/player/player.gd" id="1_45ce5"]
+[ext_resource type="Shader" path="res://shader/simplecolor.gdshader" id="2_vojlb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_chvqi"]
+radius = 1.0
+height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1cxl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_vojlb")
+shader_parameter/color = Vector3(1, 0, 0)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5y6bo"]
+radius = 1.0
+height = 5.0
+
+[node name="player" type="Node3D"]
+script = ExtResource("1_45ce5")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+lock_rotation = true
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CapsuleMesh_chvqi")
+surface_material_override/0 = SubResource("ShaderMaterial_g1cxl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_5y6bo")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 0)
+modulate = Color(0, 0, 0, 1)
+text = "Earth Guard"
+font_size = 256
