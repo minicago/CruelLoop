@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7jeml1ptejx"]
+
+[ext_resource type="Script" path="res://2D/card/card_pannel.gd" id="1_q58pc"]
+
+[node name="card_pannel" type="Panel"]
+offset_right = 1216.0
+offset_bottom = 200.0
+script = ExtResource("1_q58pc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1216.0
+offset_bottom = 200.0
+alignment = 1

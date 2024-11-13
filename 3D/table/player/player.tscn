@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cput3nexwqjcw"]
 
-[ext_resource type="Script" path="res://table/player/player.gd" id="1_45ce5"]
-[ext_resource type="Shader" path="res://shader/simplecolor.gdshader" id="2_vojlb"]
+[ext_resource type="Script" path="res://3D/table/player/player.gd" id="1_45ce5"]
+[ext_resource type="Shader" path="res://3D/shader/simplecolor.gdshader" id="2_vojlb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_chvqi"]
 radius = 1.0

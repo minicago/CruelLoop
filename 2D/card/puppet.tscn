@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdkcci3mn5b5s"]
+
+[ext_resource type="Texture2D" uid="uid://bpg2iwbjowwfm" path="res://2D/card/card_background.png" id="1_ty14n"]
+
+[node name="Control" type="TextureRect"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("1_ty14n")

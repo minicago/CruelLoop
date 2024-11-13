@@ -1,12 +1,12 @@
 extends Node3D
 class_name GameControl
 
-var blockTscn = preload("res://table/block/block.tscn")
+var blockTscn = preload("res://3D/table/block/block.tscn")
 var blocks : Array[Block]
 
 @onready var player = $player
 static var animePlaying = false
-var action_list : Array[Dictionary]
+static var action_list : Array[Dictionary]
 
 func block_ready():
 	blocks.resize(24)
@@ -52,13 +52,15 @@ func mov_player_to(num:int):
 	
 	pass
 
+static func player_walk_to(num):
+	action_list.push_back({"type":"player_move","num":num})
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func click_process(delta):
 	if Input.is_action_just_pressed("click"):
 		for i in range(0, 24):
 			if blocks[i].focused :
-				action_list.push_back({"type":"player_move","num":i})
+				player_walk_to(i)
 				
 func play_anime():
 	animePlaying = true
@@ -66,7 +68,7 @@ func play_anime():
 		"player_move":
 			mov_player_to(action_list[0].get("num",0))
 		"unknown":
-			print("unknown anime type error!")
+			print("Error: unknown anime type")
 	action_list.pop_front()
 	
 

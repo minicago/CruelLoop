@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://5cyd24x7r7sm"]
+[gd_scene load_steps=9 format=3 uid="uid://5cyd24x7r7sm"]
 
-[ext_resource type="Texture2D" uid="uid://drd25bk8xekbb" path="res://environment/sky.png" id="1_k6hbn"]
-[ext_resource type="PackedScene" uid="uid://b0o6ycttgo6eg" path="res://table/table.tscn" id="1_lf2qv"]
-[ext_resource type="Script" path="res://environment/sky_rotate.gd" id="2_al8g4"]
-[ext_resource type="Script" path="res://environment/light_rotate.gd" id="4_t17j1"]
+[ext_resource type="Texture2D" uid="uid://drd25bk8xekbb" path="res://3D/environment/sky.png" id="1_k6hbn"]
+[ext_resource type="PackedScene" uid="uid://b0o6ycttgo6eg" path="res://3D/table/table.tscn" id="1_lf2qv"]
+[ext_resource type="PackedScene" uid="uid://bav7bgbysdakh" path="res://2D/2D.tscn" id="1_qgote"]
+[ext_resource type="Script" path="res://3D/environment/sky_rotate.gd" id="2_al8g4"]
+[ext_resource type="Script" path="res://3D/environment/light_rotate.gd" id="4_t17j1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qufiq"]
 panorama = ExtResource("1_k6hbn")
@@ -16,6 +17,8 @@ background_mode = 2
 sky = SubResource("Sky_5cly0")
 
 [node name="3Dworld" type="Node3D"]
+
+[node name="Control" parent="." instance=ExtResource("1_qgote")]
 
 [node name="Table" parent="." instance=ExtResource("1_lf2qv")]
 
