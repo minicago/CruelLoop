@@ -10,6 +10,8 @@ const speed = 1000.0
 
 var destion : Vector2
 
+var picked = false
+
 func load_dic(id):
 	
 	dic = Global.card_list[id]
@@ -23,6 +25,8 @@ func load_dic(id):
 func _ready() -> void:
 	pass # Replace with function body.
 
+func _pressed() -> void:
+	Global.pick_card(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func move_process(delta):

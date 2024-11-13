@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func add_card_to_hand(id):
 	var card = preload("res://2D/card/card.tscn").instantiate()
+	Global.hand.append(card)
 	cardPannel.add_card(card)
 	card.load_dic(id)
 	return card
@@ -17,14 +18,15 @@ func add_card_to_hand(id):
 var flag = false
 var flag2 = false
 var x
+var y
+
+
+
 func _process(delta: float) -> void:
 	if not flag :
 		flag = true
-		
-
-		
 		x = add_card_to_hand("1")
-		add_card_to_hand("1")
+		y = add_card_to_hand("1")
 	
 	if Time.get_ticks_msec() > 20000 and not flag2:
 		flag2 = true

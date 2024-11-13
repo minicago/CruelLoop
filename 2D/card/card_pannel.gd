@@ -29,5 +29,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for card in puppets:
-		card.move_to(puppets[card].position)
+		if card.picked :
+			card.move_to(Vector2(948,64) - self.position)
+		else :
+			card.move_to(puppets[card].position)
 	pass

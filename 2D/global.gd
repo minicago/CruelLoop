@@ -14,9 +14,18 @@ class Build :
 	
 static var card_list : Dictionary
 
-static var deck : Array[Card]
-static var hand : Array[Card]
+static var deck : Array
+static var hand : Array
+static var picked_card
 static var build : Array[Array]
+
+static func pick_card(card):
+	if picked_card != null:
+		picked_card.picked = false
+	picked_card = card
+	card.picked = true
+		
+	
 
 static func save_to_file(path, content):
 	var file = FileAccess.open(path, FileAccess.WRITE)
